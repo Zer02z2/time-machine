@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react"
 import { IpInfo } from "./ipInfo"
 import { Time } from "./time"
-import { getIpInfo } from "../../fetch/getIpInfo"
+import { postIpInfo } from "../../fetch/postIpInfo"
 
 export const MainUser = () => {
   const [ip, setIp] = useState<string | undefined>()
   const [location, setLocation] = useState<string | undefined>()
+  const [userName, setUserName] = useState<string>("User")
 
   useEffect(() => {
     const init = async () => {
-      const ipInfo = await getIpInfo()
-      if (!ipInfo) return
-      const { ip, city, country } = ipInfo
-      setIp(ip)
-      if (city && country) {
-        setLocation(`${city} - ${country}`)
-      }
+      await postIpInfo("Zongze")
     }
     init()
   }, [])
