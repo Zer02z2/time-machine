@@ -21,13 +21,14 @@ export const postIpInfo = async (name: string) => {
   try {
     const response = await fetch(`${fetchUrl}/ip`, options)
     const result = await response.json()
-    console.log(result)
+    const ip: string = result.ip
+    return ip
   } catch (error) {
     console.log(error)
   }
 }
 
-// export const getServerIpInfo = async () => {
+// export const getIpInfo = async () => {
 //   const options = {
 //     method: "GET",
 //     headers: {
@@ -36,10 +37,10 @@ export const postIpInfo = async (name: string) => {
 //     },
 //   }
 //   try {
-//     const response = await fetch(`${fetchUrl}/serverIp`, options)
+//     const response = await fetch(`${fetchUrl}/myIp`, options)
 //     const result = await response.json()
-//     const ipInfo: IpInfo = result
-//     return ipInfo
+//     const ip: string = result.ip
+//     return ip
 //   } catch (error) {
 //     console.log(error)
 //   }

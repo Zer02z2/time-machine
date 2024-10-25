@@ -2,18 +2,25 @@ import { useEffect, useState } from "react"
 import { IpInfo } from "./ipInfo"
 import { Time } from "./time"
 import { postIpInfo } from "../../fetch/postIpInfo"
+import { IpLog } from "../../config"
 
-export const MainUser = () => {
+export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [ip, setIp] = useState<string | undefined>()
   const [location, setLocation] = useState<string | undefined>()
   const [userName, setUserName] = useState<string>("User")
 
   useEffect(() => {
-    const init = async () => {
-      await postIpInfo("Zongze")
+    const update = async () => {
+      const myIp = await postIpInfo("ZZ")
+      if (!(myIp && ipLog)) return
+      const myInfo = ipLog[myIp]
+      const { ip, name, city, country } = myInfo
+      setIp(ip)
+      setLocation(`${city} - ${country}`)
+      setUserName(name)
     }
-    init()
-  }, [])
+    update()
+  }, [ipLog])
   return (
     <div className="p-8 rounded-lg bg-neutral-800">
       <div className="flex items-center gap-2">

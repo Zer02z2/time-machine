@@ -1,7 +1,14 @@
 const dev = true
 
-const fetchUrl = `${
+export const fetchUrl = `${
   dev ? "http://localhost:3001" : "https://io.zongzechen.com"
 }/undnet/timeMachine/api`
 
-export { fetchUrl }
+export interface IpLog {
+  [name: string]: {
+    ip: string
+    name: string
+    city: string
+    country: string
+  }
+}
