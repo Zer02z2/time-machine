@@ -1,4 +1,4 @@
-import { MainUser } from "./components/mainUser"
+import { MainUser } from "./components"
 
 export default function App() {
   return (

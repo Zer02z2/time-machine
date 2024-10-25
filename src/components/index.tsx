@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getIpInfo } from "../../fetch/getIp"
+import { getIpInfo } from "../fetch/getIp"
 import { SmallText } from "./smallText"
 
 export const MainUser = () => {
