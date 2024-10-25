@@ -23,9 +23,9 @@ export const Time = () => {
 
   return (
     <div>
-      <SmallText>{`Local time ${timeZone && timeZone}`}</SmallText>
+      <SmallText>{`Device local time ${timeZone && timeZone}`}</SmallText>
       <p>{localTime && localTime}</p>
-      <SmallText>UTC time</SmallText>
+      <SmallText>Decive UTC time</SmallText>
       <p>{UTCTime && UTCTime}</p>
     </div>
   )

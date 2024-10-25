@@ -23,3 +23,21 @@ export const getIpInfo = async () => {
     console.log(error)
   }
 }
+
+export const getServerIpInfo = async () => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  }
+  try {
+    const response = await fetch(`${fetchUrl}/serverIp`, options)
+    const result = await response.json()
+    const ipInfo: IpInfo = result
+    return ipInfo
+  } catch (error) {
+    console.log(error)
+  }
+}
