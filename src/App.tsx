@@ -1,4 +1,4 @@
-import { MainUser } from "./components"
+import { MainUser } from "./components/infoPanel/mainUser"
 
 export default function App() {
   return (
