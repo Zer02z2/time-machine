@@ -1,3 +1,11 @@
+import { MainUser } from "./components/mainUser"
+
 export default function App() {
-  return <div>hi</div>
+  return (
+    <div className="p-8">
+      <div className="flex">
+        <MainUser />
+      </div>
+    </div>
+  )
 }
