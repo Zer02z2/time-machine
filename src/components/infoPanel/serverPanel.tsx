@@ -27,7 +27,7 @@ export const ServerPanel = ({ ipLog }: { ipLog: IpLog | undefined }) => {
       <div className="pt-4"></div>
       <IpInfo ip={ip} location={location} />
       <div className="pt-4"></div>
-      {timeZone && <SmallText>{timeZone}</SmallText>}
+      {timeZone && <SmallText>{`Time zone: ${timeZone}`}</SmallText>}
     </div>
   )
 }

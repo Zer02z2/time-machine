@@ -11,11 +11,9 @@ export const getServerTime = async () => {
   try {
     const response = await fetch(`${fetchUrl}/serverTime`, options)
     const result: {
-      millisTime: number
-      serverMillis: number
-      serverTime: string
+      time: number
     } = await response.json()
-    console.log(result)
+    return result.time
   } catch (error) {
     console.log(error)
   }

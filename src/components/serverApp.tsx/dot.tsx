@@ -1,4 +1,4 @@
-import { DotColor } from "."
+import { DotColor } from "./connection"
 
 export const Dot = ({ color }: { color: DotColor }) => {
   return (

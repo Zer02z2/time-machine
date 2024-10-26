@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { io } from "socket.io-client"
 import { IpLog, socketUrl } from "./config"
-import { ServerApp } from "./serverApp"
+import { ServerApp } from "./components/serverApp.tsx"
 
 const socket = io(socketUrl)
 

@@ -24,6 +24,7 @@ export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
     const update = () => {
       if (!(identifier && ipLog)) return
       const myInfo = ipLog[identifier]
+      if (!myInfo) return
       const { ip, name, city, country } = myInfo
       setIp(ip)
       setLocation(`${city} - ${country}`)
