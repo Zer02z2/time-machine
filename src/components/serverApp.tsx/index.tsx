@@ -5,6 +5,7 @@ import { MainUser } from "../infoPanel/mainUser"
 import { Connection } from "./connection"
 import { ServerPanel } from "../infoPanel/serverPanel"
 import { Header } from "./header"
+import { Analysis } from "./analysis"
 
 export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [isFetching, setIsFetching] = useState<boolean>(false)
@@ -36,6 +37,16 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
         />
         <ServerPanel ipLog={ipLog} />
       </div>
+      <div className="pt-10"></div>
+      {!isFetching && startTime && serverTime && receiveTime && (
+        <Analysis
+          props={{
+            startTime: startTime,
+            serverTime: serverTime,
+            receiveTime: receiveTime,
+          }}
+        />
+      )}
     </div>
   )
 }

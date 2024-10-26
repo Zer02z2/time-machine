@@ -19,13 +19,6 @@ export const Connection = ({ props }: { props: Props }) => {
   const [color, setColor] = useState<DotColor>("yellow")
   const [scope, animate] = useAnimate()
 
-  const timeStamp = (millis: number) => {
-    const date = new Date(millis)
-    const UTCTime = date.toUTCString()
-    const currentMillis = date.getMilliseconds()
-    return `${UTCTime} ${currentMillis}ms`
-  }
-
   const moveDot = async () => {
     if (!isFetching) return
     setColor("yellow")
@@ -79,4 +72,11 @@ export const Connection = ({ props }: { props: Props }) => {
       </div>
     </div>
   )
+}
+
+export const timeStamp = (millis: number) => {
+  const date = new Date(millis)
+  const UTCTime = date.toUTCString()
+  const currentMillis = date.getMilliseconds()
+  return `${UTCTime} ${currentMillis}ms`
 }
