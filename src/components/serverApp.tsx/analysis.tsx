@@ -17,14 +17,38 @@ export const Analysis = ({ props }: { props: Props }) => {
   const theoryTime = timeStamp(theoryTimeMillis)
   const actualTime = timeStamp(serverTime)
 
+  const timeDifference = serverTime - theoryTimeMillis
+  const getResult = (
+    millis: number
+  ): { color: "yellow" | "green" | "pink"; text: string } => {
+    if (millis > 0) {
+      return {
+        text: `${millis}ms in the future`,
+        color: "green",
+      }
+    } else if (millis < 0) {
+      return {
+        text: `${-millis}ms in the past`,
+        color: "pink",
+      }
+    } else {
+      return {
+        text: "in sync",
+        color: "yellow",
+      }
+    }
+  }
+  const result = getResult(timeDifference)
+
   const HighLight: FC<{
     children: string
-    color: "yellow" | "green" | "purple"
+    color: "yellow" | "green" | "purple" | "pink"
   }> = ({ children, color }) => {
     const colors = {
       yellow: "bg-yellow-300",
-      green: "bg-teal-500",
+      green: "bg-teal-300",
       purple: "bg-indigo-300",
+      pink: "bg-pink-300",
     }
     return (
       <span
@@ -61,6 +85,11 @@ export const Analysis = ({ props }: { props: Props }) => {
         <HighLight color="purple">{theoryTime}</HighLight>
         <span>, but the server reported that it was&nbsp;</span>
         <HighLight color="purple">{actualTime}</HighLight>
+        <span>.</span>
+      </h3>
+      <h3 className="max-w-xl text-xl">
+        <span>If that's true, the server's clock would be&nbsp;</span>
+        <HighLight color={result.color}>{result.text}</HighLight>
         <span>.</span>
       </h3>
     </motion.div>

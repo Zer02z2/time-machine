@@ -38,7 +38,7 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
         />
         <ServerPanel ipLog={ipLog} />
       </div>
-      <div className="pt-10"></div>
+      <div className="pt-20"></div>
       <AnimatePresence>
         {!isFetching && startTime && serverTime && receiveTime && (
           <Analysis
