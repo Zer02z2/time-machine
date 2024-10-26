@@ -6,14 +6,16 @@ import { IpInfo } from "./ipInfo"
 export const ServerPanel = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [ip, setIp] = useState<string>()
   const [location, setLocation] = useState<string>()
+  const [timeZone, setTimeZone] = useState<string>()
   const identifier = "serverIp"
 
   useEffect(() => {
     if (!ipLog) return
     if (!ipLog[identifier]) return
-    const { ip, city, country } = ipLog[identifier]
+    const { ip, city, country, timeZone } = ipLog[identifier]
     setIp(ip)
     setLocation(`${city} - ${country}`)
+    setTimeZone(timeZone)
   }, [ipLog])
 
   return (
@@ -24,6 +26,8 @@ export const ServerPanel = ({ ipLog }: { ipLog: IpLog | undefined }) => {
       </div>
       <div className="pt-4"></div>
       <IpInfo ip={ip} location={location} />
+      <div className="pt-4"></div>
+      {timeZone && <SmallText>{timeZone}</SmallText>}
     </div>
   )
 }

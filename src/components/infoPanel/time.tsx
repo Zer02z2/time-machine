@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react"
 import { SmallText } from "../smallText"
 
+export const getTimeZone = () => {
+  const bootTime = new Date()
+  const clientOffset = bootTime.getTimezoneOffset()
+  const hourOffset = -clientOffset / 60
+  return `(UTC ${hourOffset}:00)`
+}
+
 export const Time = () => {
   const [timeZone, setTimeZone] = useState<string | null>()
   const [UTCTime, setUTCTime] = useState<string | null>()
@@ -13,11 +20,7 @@ export const Time = () => {
       setLocalTime(time.toLocaleString())
       window.requestAnimationFrame(updateTime)
     }
-    const bootTime = new Date()
-    const clientOffset = bootTime.getTimezoneOffset()
-    const hourOffset = -clientOffset / 60
-    const timeZone = `(UTC ${hourOffset}:00)`
-    setTimeZone(timeZone)
+    setTimeZone(getTimeZone())
     updateTime()
   }, [])
 

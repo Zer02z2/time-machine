@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { io } from "socket.io-client"
-import { IpLog } from "./config"
+import { IpLog, socketUrl } from "./config"
 import { ServerApp } from "./serverApp"
 
-const socket = io("http://localhost:3002")
+const socket = io(socketUrl)
 
 export default function App() {
   const [ipLog, setIpLog] = useState<IpLog>()
