@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { Dot } from "./dot"
 import { useAnimate } from "framer-motion"
-import { SmallText } from "../smallText"
 import { Message } from "./message"
+import { AnimatePresence } from "framer-motion"
 
 interface Props {
   isFetching: boolean
@@ -50,26 +50,32 @@ export const Connection = ({ props }: { props: Props }) => {
 
   return (
     <div className="relative flex-initial w-full">
-      <div className="w-full border-b border-neutral-500 h-1/2">
-        {startTime && (
-          <Message
-            time={timeStamp(startTime)}
-            message="What time are you?"
-            who="user"
-          />
-        )}
+      <div className="flex flex-col justify-end w-full pb-12 border-b border-neutral-500 h-1/2">
+        <AnimatePresence>
+          {startTime && (
+            <div key={startTime}>
+              <Message
+                time={timeStamp(startTime)}
+                message="What time are you?"
+                who="user"
+              />
+            </div>
+          )}
+        </AnimatePresence>
       </div>
       <div ref={scope} className="absolute left-0 translate-y-[-50%]">
         <Dot color={color} />
       </div>
-      <div className="flex items-end w-full h-1/2">
-        {!isFetching && receiveTime && serverTime && (
-          <Message
-            time={timeStamp(receiveTime)}
-            message={timeStamp(serverTime)}
-            who="server"
-          />
-        )}
+      <div className="w-full pt-12 h-1/2">
+        <AnimatePresence>
+          {!isFetching && receiveTime && serverTime && (
+            <Message
+              time={timeStamp(receiveTime)}
+              message={timeStamp(serverTime)}
+              who="server"
+            />
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )
