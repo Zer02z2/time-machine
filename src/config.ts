@@ -8,7 +8,7 @@ export interface IpLog {
   [name: string]: {
     ip: string
     name: string
-    city: string
-    country: string
+    city: string | undefined
+    country: string | undefined
   }
 }

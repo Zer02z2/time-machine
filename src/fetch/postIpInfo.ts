@@ -1,11 +1,5 @@
 import { fetchUrl } from "../config"
 
-interface IpInfo {
-  ip: string
-  city: string | undefined
-  country: string | undefined
-}
-
 export const postIpInfo = async (name: string) => {
   const data = {
     name: name,

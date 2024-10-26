@@ -7,7 +7,7 @@ import { UserName } from "./userName"
 
 export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [identifier, setIdentifier] = useState<string>()
-  const [ip, setIp] = useState<string | undefined>()
+  const [ip, setIp] = useState<string>()
   const [location, setLocation] = useState<string>()
   const [userName, setUserName] = useState<string>("User")
 
@@ -37,7 +37,7 @@ export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   }
 
   return (
-    <div className="p-8 rounded-lg bg-neutral-800">
+    <div className="flex-none p-8 rounded-lg bg-neutral-800">
       <UserName
         userName={userName}
         updateName={updateName}

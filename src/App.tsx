@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { MainUser } from "./components/infoPanel/mainUser"
 import { io } from "socket.io-client"
 import { IpLog } from "./config"
+import { ServerApp } from "./serverApp"
 
 const socket = io("http://localhost:3002")
 
@@ -15,9 +15,7 @@ export default function App() {
   }, [])
   return (
     <div className="p-8">
-      <div className="flex">
-        <MainUser ipLog={ipLog} />
-      </div>
+      <ServerApp ipLog={ipLog} />
     </div>
   )
 }
