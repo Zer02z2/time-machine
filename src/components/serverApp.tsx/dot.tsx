@@ -5,7 +5,7 @@ export const Dot = ({ color }: { color: DotColor }) => {
     <div>
       <div
         className={`${
-          color === "yellow" ? "bg-yellow-400" : "bg-teal-500"
+          color === "yellow" ? "bg-yellow-300" : "bg-teal-500"
         } rounded-full size-4`}
       ></div>
     </div>

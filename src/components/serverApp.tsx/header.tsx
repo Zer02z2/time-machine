@@ -12,7 +12,7 @@ export const Header = ({
           What time is the server (UTC)?
         </h1>
         <button
-          className="px-4 py-1 bg-yellow-400 rounded-full text-neutral-900"
+          className="px-4 py-1 bg-yellow-300 rounded-full text-neutral-900"
           onClick={askServer}
           disabled={isFetching}
         >
