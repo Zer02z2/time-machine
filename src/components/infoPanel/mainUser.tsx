@@ -3,6 +3,7 @@ import { IpInfo } from "./ipInfo"
 import { Time } from "./time"
 import { postIpInfo } from "../../fetch/postIpInfo"
 import { IpLog } from "../../config"
+import { UserName } from "./userName"
 
 export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [identifier, setIdentifier] = useState<string>()
@@ -10,13 +11,14 @@ export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [location, setLocation] = useState<string>()
   const [userName, setUserName] = useState<string>("User")
 
+  const postName = async () => {
+    const myIp = await postIpInfo(userName)
+    setIdentifier(myIp)
+  }
+
   useEffect(() => {
-    const init = async () => {
-      const myIp = await postIpInfo("ZZ")
-      setIdentifier(myIp)
-    }
-    init()
-  }, [ipLog])
+    postName()
+  }, [])
 
   useEffect(() => {
     const update = () => {
@@ -30,16 +32,17 @@ export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
     update()
   }, [ipLog, identifier])
 
+  const updateName = (value: string) => {
+    setUserName(value)
+  }
+
   return (
     <div className="p-8 rounded-lg bg-neutral-800">
-      <div className="flex items-center gap-2">
-        <img className="size-4" src="/user.svg"></img>
-        <input
-          type="text"
-          placeholder="client name"
-          className="px-2 bg-transparent border rounded-md text-neutral-500 placeholder:text-neutral-500 border-neutral-700 focus:outline-none"
-        ></input>
-      </div>
+      <UserName
+        userName={userName}
+        updateName={updateName}
+        postName={postName}
+      />
       <div className="pt-4"></div>
       <IpInfo ip={ip} location={location} />
       <div className="pt-4"></div>
