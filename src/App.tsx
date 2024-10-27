@@ -33,8 +33,17 @@ export default function App() {
   }, [userLog, userId])
 
   return (
-    <div className="p-8">
-      {user && userLog && <ServerApp userLog={userLog} user={user} />}
-    </div>
+    <>
+      {user && userLog && (
+        <div className="flex">
+          <div className="flex justify-center flex-1">
+            <div className="w-full p-8 max-w-7xl">
+              <ServerApp userLog={userLog} user={user} />
+            </div>
+          </div>
+          <div className="flex-none min-h-screen p-8 w-72"></div>
+        </div>
+      )}
+    </>
   )
 }
