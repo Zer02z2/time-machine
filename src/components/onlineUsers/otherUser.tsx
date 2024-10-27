@@ -1,7 +1,7 @@
-import { UserData } from "../../../config"
-import { getResult, HighLight } from "../../highlight"
-import { SmallText } from "../../smallText"
-import { IpInfo } from "./ipInfo"
+import { UserData } from "../../config"
+import { getResult, HighLight } from "../highlight"
+import { SmallText } from "../smallText"
+import { IpInfo } from "../serverApp.tsx/infoPanel/ipInfo"
 
 export const OtherUser = ({
   me,
@@ -20,10 +20,11 @@ export const OtherUser = ({
   const result = getResult(difference)
   return (
     <div className="flex-none p-4 rounded-lg bg-neutral-200">
-      <div className="flex items-center h-10 gap-2">
+      <div className="flex items-center gap-2">
         <img className="size-4" src="/user.svg"></img>
         <SmallText>{name}</SmallText>
       </div>
+      <div className="pt-2"></div>
       <IpInfo
         ip={publicIp}
         location={location && `${location.city} - ${location.country}`}

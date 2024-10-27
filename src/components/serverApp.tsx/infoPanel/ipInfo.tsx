@@ -9,10 +9,13 @@ export const IpInfo = ({
 }) => {
   return (
     <div>
-      <h1 className={otherUser ? "text-xl" : "text-3xl"}>{ip && ip}</h1>
+      <h1 className={otherUser ? "text-lg" : "text-3xl"}>{ip && ip}</h1>
       <div className="flex items-center gap-2">
-        <img className="size-4" src="/location.svg"></img>
-        <h2 className={otherUser ? "text-md" : "text-xl"}>
+        <img
+          className={otherUser ? "size-3" : "size-4"}
+          src="/location.svg"
+        ></img>
+        <h2 className={otherUser ? "text-sm" : "text-xl"}>
           {location && location}
         </h2>
       </div>

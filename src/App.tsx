@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { socket, UserData, UserLog } from "./config"
 import { ServerApp } from "./components/serverApp.tsx"
 import { getTimeZone } from "./components/serverApp.tsx/infoPanel/time.tsx"
+import { OnlineUsers } from "./components/onlineUsers/index.tsx"
 
 export default function App() {
   const [userLog, setUserLog] = useState<UserLog>()
@@ -34,14 +35,16 @@ export default function App() {
 
   return (
     <>
-      {user && userLog && (
+      {userId && user && userLog && (
         <div className="flex">
           <div className="flex justify-center flex-1">
             <div className="w-full p-8 max-w-7xl">
               <ServerApp userLog={userLog} user={user} />
             </div>
           </div>
-          <div className="flex-none min-h-screen p-8 w-72"></div>
+          <div className="flex-none h-screen p-8 overflow-y-auto border-l w-72 border-neutral-400">
+            <OnlineUsers myId={userId} user={user} userLog={userLog} />
+          </div>
         </div>
       )}
     </>

@@ -7,7 +7,7 @@ import { ServerPanel } from "./infoPanel/serverPanel"
 import { Header } from "./header"
 import { Analysis } from "./analysis"
 import { AnimatePresence } from "framer-motion"
-import { OtherUser } from "./infoPanel/otherUser"
+import { OtherUser } from "../onlineUsers/otherUser"
 
 export const ServerApp = ({
   userLog,
