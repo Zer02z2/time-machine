@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { UserData, UserLog } from "../../config"
+import React, { useEffect, useState } from "react"
+import { socket, UserData, UserLog } from "../../config"
 import { getServerTime } from "../../fetch/getServerTime"
 import { MainUser } from "./infoPanel/mainUser"
 import { Connection } from "./connection"
@@ -33,6 +33,18 @@ export const ServerApp = ({
   const addDifferences = (value: number) => {
     setDifferences((prev) => [...prev, value])
   }
+
+  const calcAverage = (arr: number[]) => {
+    const sum = arr.reduce((sum, num) => sum + num)
+    const average = Math.floor(sum / arr.length)
+    return average
+  }
+
+  useEffect(() => {
+    if (differences.length === 0) return
+    const average = calcAverage(differences)
+    socket.emit("userData", { ...user, timeDifference: average })
+  }, [differences])
 
   return (
     <div>

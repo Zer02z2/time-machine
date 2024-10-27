@@ -30,7 +30,7 @@ export default function App() {
     if (userLog[userId]) {
       setUser(userLog[userId])
     }
-  }, [userLog])
+  }, [userLog, userId])
 
   return (
     <div className="p-8">
