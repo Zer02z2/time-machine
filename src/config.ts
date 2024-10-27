@@ -16,11 +16,11 @@ export interface IpLog {
 
 export interface UserData {
   name: string
-  timeZone?: string
-  identifier?: string
-  ip?: string
-  city?: string
-  country?: string
+  timeZone: string | undefined
+  publicIp?: string
+  location?: {
+    city: string
+    country: string
+  }
   timeDifference?: number
-  online?: boolean
 }

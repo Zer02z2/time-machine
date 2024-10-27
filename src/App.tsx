@@ -8,34 +8,48 @@ import { postIpInfo } from "./fetch/postIpInfo.ts"
 const socket = io(socketUrl)
 
 export default function App() {
-  const [ipLog, setIpLog] = useState<IpLog>()
-  const [user, setUser] = useState<UserData>({ name: "Client Name" })
+  const [userLog, setUserLog] = useState<IpLog>()
+  const [user, setUser] = useState<UserData>()
+  const [id, setId] = useState<string>()
 
   useEffect(() => {
-    socket.on("onChange", (log) => {
-      console.log(log)
-      setIpLog(log)
-      if (!(ipLog && user.identifier)) return
-      if (!ipLog[user.identifier]) return
-      setUser(ipLog[user.identifier])
+    console.log(user)
+  }, [user])
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      const id = socket.id
+      setId(id)
+      const timeZone = getTimeZone()
+      const userName = "Client Name"
+      const user = {
+        name: userName,
+        timeZone: timeZone,
+      }
+      socket.emit("init", user)
     })
-    init()
+    socket.on("onChange", (userLog) => {
+      setUserLog(userLog)
+      console.log(userLog)
+      // if (!(ipLog && user.identifier)) return
+      // if (!ipLog[user.identifier]) return
+      // setUser(ipLog[user.identifier])
+    })
+    // init()
   }, [])
 
-  const init = async () => {
-    const timeZone = getTimeZone()
-    const identifier = await postIpInfo({ ...user, timeZone: timeZone })
-    setUser({ ...user, identifier: identifier })
-    postIpInfo({ ...user, identifier: identifier })
-  }
+  // const init = async () => {
+  //   const timeZone = getTimeZone()
+  //   const identifier = await postIpInfo({ ...user, timeZone: timeZone })
+  //   setUser({ ...user, identifier: identifier })
+  //   postIpInfo({ ...user, identifier: identifier })
+  // }
 
-  useEffect(() => {
-    socket.emit("identifier", user.identifier)
-  }, [user.identifier])
+  // useEffect(() => {
+  //   socket.emit("identifier", user.identifier)
+  // }, [user.identifier])
 
   return (
-    <div className="p-8">
-      <ServerApp ipLog={ipLog} user={user} />
-    </div>
+    <div className="p-8">{/* <ServerApp ipLog={ipLog} user={user} /> */}</div>
   )
 }
