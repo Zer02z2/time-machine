@@ -61,9 +61,9 @@ export const ServerApp = ({
             serverTime: serverTime,
           }}
         />
-        <ServerPanel userLog={userLog} differences={differences} />
+        <ServerPanel userLog={userLog} user={user} />
       </div>
-      <div className="pt-20"></div>
+      <div className="pt-10"></div>
       <AnimatePresence>
         {!isFetching && startTime && serverTime && receiveTime && (
           <Analysis

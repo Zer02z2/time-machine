@@ -1,29 +1,21 @@
 import { useEffect, useState } from "react"
-import { UserLog } from "../../../config"
+import { UserData, UserLog } from "../../../config"
 import { SmallText } from "../../smallText"
 import { IpInfo } from "./ipInfo"
 import { getResult, HighLight } from "../../highlight"
 
 export const ServerPanel = ({
+  user,
   userLog,
-  differences,
 }: {
+  user: UserData
   userLog: UserLog
-  differences: number[]
 }) => {
   const data = userLog["server"]
-  const { publicIp, location, timeZone, timeDifference } = data
+  const { publicIp, location, timeZone } = data
+  const { timeDifference } = user
 
-  const calcAverage = (arr: number[]) => {
-    if (arr.length === 0) return 0
-    const sum = arr.reduce((sum, num) => sum + num)
-    const average = Math.floor(sum / arr.length)
-    return average
-  }
-
-  const result = getResult(calcAverage(differences))
-
-  useEffect(() => {}, [differences])
+  const result = getResult(timeDifference)
 
   return (
     <div className="flex-none p-8 rounded-lg bg-neutral-200">
@@ -39,7 +31,7 @@ export const ServerPanel = ({
       <div className="pt-4"></div>
       {timeZone && <SmallText>{`Time zone: ${timeZone}`}</SmallText>}
       <div className="pt-2"></div>
-      {differences.length > 0 && (
+      {timeDifference && (
         <>
           <SmallText>On average, the server is</SmallText>
           <h3 className="text-xl">

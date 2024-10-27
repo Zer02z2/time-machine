@@ -2,6 +2,7 @@ import { timeStamp } from "./connection"
 import { motion } from "framer-motion"
 import { getResult, HighLight } from "../highlight"
 import { useEffect } from "react"
+import { UserData } from "../../config"
 
 interface Props {
   startTime: number

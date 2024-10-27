@@ -2,13 +2,14 @@ import { FC } from "react"
 
 export const HighLight: FC<{
   children: string
-  color: "yellow" | "green" | "purple" | "pink"
+  color: "yellow" | "green" | "purple" | "pink" | "gray"
 }> = ({ children, color }) => {
   const colors = {
     yellow: "bg-yellow-300",
     green: "bg-teal-300",
     purple: "bg-indigo-300",
     pink: "bg-pink-300",
+    gray: "bg-neutral-300",
   }
   return (
     <span
@@ -20,8 +21,14 @@ export const HighLight: FC<{
 }
 
 export const getResult = (
-  millis: number
-): { color: "yellow" | "green" | "pink"; text: string } => {
+  millis: number | undefined
+): { color: "yellow" | "green" | "pink" | "gray"; text: string } => {
+  if (millis !== 0 && !millis) {
+    return {
+      text: "Unknown",
+      color: "gray",
+    }
+  }
   if (millis > 0) {
     return {
       text: `${millis}ms in the future`,
