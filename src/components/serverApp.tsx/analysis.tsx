@@ -1,15 +1,17 @@
-import { FC } from "react"
 import { timeStamp } from "./connection"
 import { motion } from "framer-motion"
+import { getResult, HighLight } from "./highlight"
+import { useEffect } from "react"
 
 interface Props {
   startTime: number
   receiveTime: number
   serverTime: number
+  addDifferences: (value: number) => void
 }
 
 export const Analysis = ({ props }: { props: Props }) => {
-  const { startTime, serverTime, receiveTime } = props
+  const { startTime, serverTime, receiveTime, addDifferences } = props
 
   const roundTripTime = receiveTime - startTime
   const halfTripTime = Math.floor(roundTripTime / 2)
@@ -18,46 +20,11 @@ export const Analysis = ({ props }: { props: Props }) => {
   const actualTime = timeStamp(serverTime)
 
   const timeDifference = serverTime - theoryTimeMillis
-  const getResult = (
-    millis: number
-  ): { color: "yellow" | "green" | "pink"; text: string } => {
-    if (millis > 0) {
-      return {
-        text: `${millis}ms in the future`,
-        color: "green",
-      }
-    } else if (millis < 0) {
-      return {
-        text: `${-millis}ms in the past`,
-        color: "pink",
-      }
-    } else {
-      return {
-        text: "in sync",
-        color: "yellow",
-      }
-    }
-  }
   const result = getResult(timeDifference)
 
-  const HighLight: FC<{
-    children: string
-    color: "yellow" | "green" | "purple" | "pink"
-  }> = ({ children, color }) => {
-    const colors = {
-      yellow: "bg-yellow-300",
-      green: "bg-teal-300",
-      purple: "bg-indigo-300",
-      pink: "bg-pink-300",
-    }
-    return (
-      <span
-        className={`${colors[color]} rounded-full text-neutral-900 px-2 font-medium`}
-      >
-        {children}
-      </span>
-    )
-  }
+  useEffect(() => {
+    addDifferences(timeDifference)
+  }, [])
 
   return (
     <motion.div

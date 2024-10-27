@@ -13,6 +13,7 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   const [startTime, setStartTime] = useState<number>()
   const [receiveTime, setReceiveTime] = useState<number>()
   const [serverTime, setServerTime] = useState<number>()
+  const [differences, setDifferences] = useState<number[]>([])
 
   const askServer = async () => {
     setIsFetching(true)
@@ -22,6 +23,11 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
     setReceiveTime(new Date().getTime())
     setServerTime(response)
   }
+
+  const addDifferences = (value: number) => {
+    setDifferences((prev) => [...prev, value])
+  }
+
   return (
     <div>
       <Header askServer={askServer} isFetching={isFetching} />
@@ -36,7 +42,7 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
             serverTime: serverTime,
           }}
         />
-        <ServerPanel ipLog={ipLog} />
+        <ServerPanel ipLog={ipLog} differences={differences} />
       </div>
       <div className="pt-20"></div>
       <AnimatePresence>
@@ -46,6 +52,7 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
               startTime: startTime,
               serverTime: serverTime,
               receiveTime: receiveTime,
+              addDifferences: addDifferences,
             }}
           />
         )}
