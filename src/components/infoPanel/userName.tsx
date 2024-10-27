@@ -1,27 +1,28 @@
-export const UserName = ({
-  userName,
-  updateName,
-  postName,
-}: {
-  userName: string
-  updateName: (value: string) => void
-  postName: () => void
-}) => {
+import { useEffect, useState } from "react"
+import { UserData } from "../../config"
+import { postIpInfo } from "../../fetch/postIpInfo"
+
+export const UserName = ({ user }: { user: UserData }) => {
+  const [value, setValue] = useState<string>("")
+  useEffect(() => {
+    setValue(user.name)
+  }, [user.name])
+
   return (
     <div className="flex items-center h-10 gap-2">
       <img className="size-4" src="/user.svg"></img>
       <input
         type="text"
-        value={userName}
-        onChange={(e) => updateName(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         onBlur={() => {
-          if (userName.replace(/\s+/g, "").length === 0) return
-          postName()
+          if (value.replace(/\s+/g, "").length === 0) return
+          postIpInfo({ ...user, name: value })
         }}
         onKeyDown={(e) => {
           if (e.key !== "Enter") return
-          if (userName.replace(/\s+/g, "").length === 0) return
-          postName()
+          if (value.replace(/\s+/g, "").length === 0) return
+          postIpInfo({ ...user, name: value })
           const target = e.target as HTMLInputElement
           target.blur()
         }}

@@ -1,10 +1,11 @@
-import { getTimeZone } from "../components/infoPanel/time"
-import { fetchUrl } from "../config"
+import { fetchUrl, UserData } from "../config"
 
-export const postIpInfo = async (name: string) => {
+export const postIpInfo = async (userData: UserData) => {
+  const { name, timeZone, timeDifference } = userData
   const data = {
     name: name,
-    timeZone: getTimeZone(),
+    timeZone: timeZone,
+    timeDifference: timeDifference,
   }
   const options = {
     method: "POST",

@@ -1,62 +1,17 @@
-import { useEffect, useState } from "react"
 import { IpInfo } from "./ipInfo"
-import { Time } from "./time"
-import { postIpInfo } from "../../fetch/postIpInfo"
-import { IpLog } from "../../config"
+import { UserData } from "../../config"
 import { UserName } from "./userName"
 
-export const MainUser = ({
-  ipLog,
-  sendIp,
-}: {
-  ipLog: IpLog | undefined
-  sendIp: (ip: string) => void
-}) => {
-  const [identifier, setIdentifier] = useState<string>()
-  const [ip, setIp] = useState<string>()
-  const [location, setLocation] = useState<string>()
-  const [userName, setUserName] = useState<string>("User")
+import { Time } from "./time"
 
-  const postName = async () => {
-    const myIp = await postIpInfo(userName)
-    setIdentifier(myIp)
-  }
-
-  useEffect(() => {
-    postName()
-  }, [])
-
-  useEffect(() => {
-    if (!identifier) return
-    sendIp(identifier)
-  }, [identifier])
-
-  useEffect(() => {
-    const update = () => {
-      if (!(identifier && ipLog)) return
-      const myInfo = ipLog[identifier]
-      if (!myInfo) return
-      const { ip, name, city, country } = myInfo
-      setIp(ip)
-      setLocation(`${city} - ${country}`)
-      setUserName(name)
-    }
-    update()
-  }, [ipLog, identifier])
-
-  const updateName = (value: string) => {
-    setUserName(value)
-  }
+export const MainUser = ({ user }: { user: UserData }) => {
+  const { ip, city, country } = user
 
   return (
     <div className="flex-none p-8 rounded-lg bg-neutral-200">
-      <UserName
-        userName={userName}
-        updateName={updateName}
-        postName={postName}
-      />
+      <UserName user={user} />
       <div className="pt-4"></div>
-      <IpInfo ip={ip} location={location} />
+      <IpInfo ip={ip} location={`${city} - ${country}`} />
       <div className="pt-4"></div>
       <Time />
     </div>

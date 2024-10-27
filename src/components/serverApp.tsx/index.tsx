@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { IpLog } from "../../config"
+import React, { useState } from "react"
+import { IpLog, UserData } from "../../config"
 import { getServerTime } from "../../fetch/getServerTime"
 import { MainUser } from "../infoPanel/mainUser"
 import { Connection } from "./connection"
@@ -10,10 +10,10 @@ import { AnimatePresence } from "framer-motion"
 
 export const ServerApp = ({
   ipLog,
-  sendIp,
+  user,
 }: {
   ipLog: IpLog | undefined
-  sendIp: (ip: string) => void
+  user: UserData
 }) => {
   const [isFetching, setIsFetching] = useState<boolean>(false)
   const [startTime, setStartTime] = useState<number>()
@@ -39,7 +39,7 @@ export const ServerApp = ({
       <Header askServer={askServer} isFetching={isFetching} />
       <div className="pt-4"></div>
       <div className="flex gap-8">
-        <MainUser ipLog={ipLog} sendIp={sendIp} />
+        <MainUser user={user} />
         <Connection
           props={{
             isFetching: isFetching,

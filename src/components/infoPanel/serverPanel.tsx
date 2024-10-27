@@ -34,6 +34,8 @@ export const ServerPanel = ({
 
   const result = getResult(calcAverage(differences))
 
+  useEffect(() => {}, [differences])
+
   return (
     <div className="flex-none p-8 rounded-lg bg-neutral-200">
       <div className="flex items-center h-10 gap-2">

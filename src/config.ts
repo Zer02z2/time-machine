@@ -11,11 +11,16 @@ export const socketUrl = `${
 }`
 
 export interface IpLog {
-  [name: string]: {
-    ip: string
-    name: string
-    city: string | undefined
-    country: string | undefined
-    timeZone: string | undefined
-  }
+  [name: string]: UserData
+}
+
+export interface UserData {
+  name: string
+  timeZone?: string
+  identifier?: string
+  ip?: string
+  city?: string
+  country?: string
+  timeDifference?: number
+  online?: boolean
 }
