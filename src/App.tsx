@@ -36,7 +36,7 @@ export default function App() {
   return (
     <>
       {userId && user && userLog && (
-        <div className="flex">
+        <div className="flex min-w-[85rem]">
           <div className="flex justify-center flex-1">
             <div className="w-full p-8 max-w-7xl">
               <ServerApp userLog={userLog} user={user} />

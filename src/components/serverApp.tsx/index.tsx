@@ -64,7 +64,7 @@ export const ServerApp = ({
         />
         <ServerPanel userLog={userLog} user={user} />
       </div>
-      <div className="pt-10"></div>
+      <div className="pt-14"></div>
       <AnimatePresence>
         {!isFetching && startTime && serverTime && receiveTime && (
           <Analysis

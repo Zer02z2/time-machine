@@ -7,9 +7,7 @@ export const fetchUrl = `${
 }/undnet/timeMachine/api`
 
 export const socketUrl = `${
-  dev
-    ? "http://localhost:3002"
-    : "https://io.zongzechen.com/undnet/timeMachine/socket"
+  dev ? "http://localhost:3001/" : "https://io.zongzechen.com/undnet/"
 }`
 
 export const socket = io(socketUrl)
