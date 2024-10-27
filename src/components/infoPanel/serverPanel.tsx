@@ -35,8 +35,8 @@ export const ServerPanel = ({
   const result = getResult(calcAverage(differences))
 
   return (
-    <div className="flex-none p-8 rounded-lg bg-neutral-800">
-      <div className="flex items-center gap-2">
+    <div className="flex-none p-8 rounded-lg bg-neutral-200">
+      <div className="flex items-center h-10 gap-2">
         <img className="size-4" src="/server.svg"></img>
         <SmallText>Server</SmallText>
       </div>
@@ -44,8 +44,8 @@ export const ServerPanel = ({
       <IpInfo ip={ip} location={location} />
       <div className="pt-4"></div>
       {timeZone && <SmallText>{`Time zone: ${timeZone}`}</SmallText>}
-      <div className="pt-4"></div>
-      {differences[0] && (
+      <div className="pt-2"></div>
+      {differences.length > 0 && (
         <>
           <SmallText>On average, the server is</SmallText>
           <h3 className="text-xl">

@@ -43,7 +43,7 @@ export const Connection = ({ props }: { props: Props }) => {
 
   return (
     <div className="relative flex-initial w-full">
-      <div className="flex flex-col justify-end w-full pb-12 border-b border-neutral-500 h-1/2">
+      <div className="flex flex-col justify-end w-full pb-12 border-b border-neutral-400 h-1/2">
         <AnimatePresence>
           {startTime && (
             <div key={startTime}>

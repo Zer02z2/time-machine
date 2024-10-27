@@ -5,7 +5,13 @@ import { postIpInfo } from "../../fetch/postIpInfo"
 import { IpLog } from "../../config"
 import { UserName } from "./userName"
 
-export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
+export const MainUser = ({
+  ipLog,
+  sendIp,
+}: {
+  ipLog: IpLog | undefined
+  sendIp: (ip: string) => void
+}) => {
   const [identifier, setIdentifier] = useState<string>()
   const [ip, setIp] = useState<string>()
   const [location, setLocation] = useState<string>()
@@ -19,6 +25,11 @@ export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   useEffect(() => {
     postName()
   }, [])
+
+  useEffect(() => {
+    if (!identifier) return
+    sendIp(identifier)
+  }, [identifier])
 
   useEffect(() => {
     const update = () => {
@@ -38,7 +49,7 @@ export const MainUser = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   }
 
   return (
-    <div className="flex-none p-8 rounded-lg bg-neutral-800">
+    <div className="flex-none p-8 rounded-lg bg-neutral-200">
       <UserName
         userName={userName}
         updateName={updateName}

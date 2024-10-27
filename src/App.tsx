@@ -13,9 +13,12 @@ export default function App() {
       setIpLog(log)
     })
   }, [])
+  const sendIpWithSocket = (ip: string) => {
+    socket.emit("ip", ip)
+  }
   return (
     <div className="p-8">
-      <ServerApp ipLog={ipLog} />
+      <ServerApp ipLog={ipLog} sendIp={sendIpWithSocket} />
     </div>
   )
 }

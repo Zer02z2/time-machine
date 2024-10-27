@@ -8,7 +8,13 @@ import { Header } from "./header"
 import { Analysis } from "./analysis"
 import { AnimatePresence } from "framer-motion"
 
-export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
+export const ServerApp = ({
+  ipLog,
+  sendIp,
+}: {
+  ipLog: IpLog | undefined
+  sendIp: (ip: string) => void
+}) => {
   const [isFetching, setIsFetching] = useState<boolean>(false)
   const [startTime, setStartTime] = useState<number>()
   const [receiveTime, setReceiveTime] = useState<number>()
@@ -31,8 +37,9 @@ export const ServerApp = ({ ipLog }: { ipLog: IpLog | undefined }) => {
   return (
     <div>
       <Header askServer={askServer} isFetching={isFetching} />
+      <div className="pt-4"></div>
       <div className="flex gap-8">
-        <MainUser ipLog={ipLog} />
+        <MainUser ipLog={ipLog} sendIp={sendIp} />
         <Connection
           props={{
             isFetching: isFetching,

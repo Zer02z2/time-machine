@@ -8,7 +8,7 @@ export const Header = ({
   return (
     <div>
       <div className="flex flex-col items-center w-full pb-8">
-        <h1 className="pb-4 text-3xl font-bold text-neutral-300">
+        <h1 className="pb-4 text-3xl font-bold text-neutral-900">
           What time is the server (UTC)?
         </h1>
         <button

@@ -28,6 +28,7 @@ export const Time = () => {
     <div>
       <SmallText>{`Device local time ${timeZone && timeZone}`}</SmallText>
       <p>{localTime && localTime}</p>
+      <div className="pt-2"></div>
       <SmallText>Decive UTC time</SmallText>
       <p>{UTCTime && UTCTime}</p>
     </div>

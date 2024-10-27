@@ -8,7 +8,7 @@ export const UserName = ({
   postName: () => void
 }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center h-10 gap-2">
       <img className="size-4" src="/user.svg"></img>
       <input
         type="text"
