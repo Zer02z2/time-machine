@@ -1,6 +1,6 @@
 import { timeStamp } from "./connection"
 import { motion } from "framer-motion"
-import { getResult, HighLight } from "./highlight"
+import { getResult, HighLight } from "../highlight"
 import { useEffect } from "react"
 
 interface Props {

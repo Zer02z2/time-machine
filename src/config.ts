@@ -1,3 +1,5 @@
+import { io } from "socket.io-client"
+
 const dev = true
 
 export const fetchUrl = `${
@@ -10,7 +12,9 @@ export const socketUrl = `${
     : "https://io.zongzechen.com/undnet/timeMachine/socket"
 }`
 
-export interface IpLog {
+export const socket = io(socketUrl)
+
+export interface UserLog {
   [name: string]: UserData
 }
 

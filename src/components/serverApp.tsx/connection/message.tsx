@@ -1,4 +1,4 @@
-import { SmallText } from "../smallText"
+import { SmallText } from "../../smallText"
 import { motion } from "framer-motion"
 
 export const Message = ({

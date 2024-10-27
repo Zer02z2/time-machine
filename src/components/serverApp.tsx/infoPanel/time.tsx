@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { SmallText } from "../smallText"
+import { SmallText } from "../../smallText"
 
 export const getTimeZone = () => {
   const bootTime = new Date()

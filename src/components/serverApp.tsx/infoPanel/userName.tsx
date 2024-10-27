@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { UserData } from "../../config"
-import { postIpInfo } from "../../fetch/postIpInfo"
+import { socket, UserData } from "../../../config"
 
 export const UserName = ({ user }: { user: UserData }) => {
   const [value, setValue] = useState<string>("")
@@ -17,12 +16,12 @@ export const UserName = ({ user }: { user: UserData }) => {
         onChange={(e) => setValue(e.target.value)}
         onBlur={() => {
           if (value.replace(/\s+/g, "").length === 0) return
-          postIpInfo({ ...user, name: value })
+          socket.emit("userData", { ...user, name: value })
         }}
         onKeyDown={(e) => {
           if (e.key !== "Enter") return
           if (value.replace(/\s+/g, "").length === 0) return
-          postIpInfo({ ...user, name: value })
+          socket.emit("userData", { ...user, name: value })
           const target = e.target as HTMLInputElement
           target.blur()
         }}

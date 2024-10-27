@@ -1,18 +1,18 @@
 import React, { useState } from "react"
-import { IpLog, UserData } from "../../config"
+import { UserData, UserLog } from "../../config"
 import { getServerTime } from "../../fetch/getServerTime"
-import { MainUser } from "../infoPanel/mainUser"
+import { MainUser } from "./infoPanel/mainUser"
 import { Connection } from "./connection"
-import { ServerPanel } from "../infoPanel/serverPanel"
+import { ServerPanel } from "./infoPanel/serverPanel"
 import { Header } from "./header"
 import { Analysis } from "./analysis"
 import { AnimatePresence } from "framer-motion"
 
 export const ServerApp = ({
-  ipLog,
+  userLog,
   user,
 }: {
-  ipLog: IpLog | undefined
+  userLog: UserLog
   user: UserData
 }) => {
   const [isFetching, setIsFetching] = useState<boolean>(false)
@@ -49,7 +49,7 @@ export const ServerApp = ({
             serverTime: serverTime,
           }}
         />
-        <ServerPanel ipLog={ipLog} differences={differences} />
+        <ServerPanel userLog={userLog} differences={differences} />
       </div>
       <div className="pt-20"></div>
       <AnimatePresence>

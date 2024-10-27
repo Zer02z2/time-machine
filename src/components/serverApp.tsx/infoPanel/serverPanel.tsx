@@ -1,29 +1,18 @@
 import { useEffect, useState } from "react"
-import { IpLog } from "../../config"
-import { SmallText } from "../smallText"
+import { UserLog } from "../../../config"
+import { SmallText } from "../../smallText"
 import { IpInfo } from "./ipInfo"
-import { getResult, HighLight } from "../serverApp.tsx/highlight"
+import { getResult, HighLight } from "../../highlight"
 
 export const ServerPanel = ({
-  ipLog,
+  userLog,
   differences,
 }: {
-  ipLog: IpLog | undefined
+  userLog: UserLog
   differences: number[]
 }) => {
-  const [ip, setIp] = useState<string>()
-  const [location, setLocation] = useState<string>()
-  const [timeZone, setTimeZone] = useState<string>()
-  const identifier = "serverIp"
-
-  useEffect(() => {
-    if (!ipLog) return
-    if (!ipLog[identifier]) return
-    const { ip, city, country, timeZone } = ipLog[identifier]
-    setIp(ip)
-    setLocation(`${city} - ${country}`)
-    setTimeZone(timeZone)
-  }, [ipLog])
+  const data = userLog["server"]
+  const { publicIp, location, timeZone, timeDifference } = data
 
   const calcAverage = (arr: number[]) => {
     if (arr.length === 0) return 0
@@ -43,7 +32,10 @@ export const ServerPanel = ({
         <SmallText>Server</SmallText>
       </div>
       <div className="pt-4"></div>
-      <IpInfo ip={ip} location={location} />
+      <IpInfo
+        ip={publicIp}
+        location={location && `${location.city} - ${location.country}`}
+      />
       <div className="pt-4"></div>
       {timeZone && <SmallText>{`Time zone: ${timeZone}`}</SmallText>}
       <div className="pt-2"></div>
