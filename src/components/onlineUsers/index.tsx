@@ -27,7 +27,7 @@ export const OnlineUsers = ({
 
   return (
     <div>
-      <SmallText>{`Other users - (${
+      <SmallText>{`Other online users - (${
         onlineUsers ? Object.keys(onlineUsers).length : 0
       })`}</SmallText>
       <div className="flex flex-col gap-2 pt-4">

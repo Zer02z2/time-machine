@@ -26,7 +26,8 @@ export const UserName = ({ user }: { user: UserData }) => {
           const target = e.target as HTMLInputElement
           target.blur()
         }}
-        className="px-2 bg-transparent border rounded-md text-neutral-500 placeholder:text-neutral-500 border-neutral-700 focus:outline-none focus:border-neutral-500"
+        onFocus={(e) => e.target.select()}
+        className="px-2 bg-transparent border rounded-md text-neutral-500 placeholder:text-neutral-500 border-neutral-500 focus:outline-none focus:border-neutral-900"
       ></input>
     </div>
   )
