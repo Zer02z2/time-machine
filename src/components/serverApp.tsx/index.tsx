@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { socket, UserData, UserLog } from "../../config"
 import { getServerTime } from "../../fetch/getServerTime"
 import { MainUser } from "./infoPanel/mainUser"
@@ -7,7 +7,6 @@ import { ServerPanel } from "./infoPanel/serverPanel"
 import { Header } from "./header"
 import { Analysis } from "./analysis"
 import { AnimatePresence } from "framer-motion"
-import { OtherUser } from "../onlineUsers/otherUser"
 
 export const ServerApp = ({
   userLog,

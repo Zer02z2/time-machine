@@ -1,5 +1,7 @@
 import { SmallText } from "../../smallText"
 import { motion } from "framer-motion"
+import userUrl from "../../../assets/user.svg"
+import serverUrl from "../../../assets/server.svg"
 
 export const Message = ({
   time,
@@ -18,10 +20,7 @@ export const Message = ({
       exit={{ y: "-100%", opacity: 0 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <img
-        src={who === "user" ? "/user.svg" : "/server.svg"}
-        className="size-6"
-      ></img>
+      <img src={who === "user" ? userUrl : serverUrl} className="size-6"></img>
       <div>
         <SmallText>{time}</SmallText>
         <div className="inline-block">

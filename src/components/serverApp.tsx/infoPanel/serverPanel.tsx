@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
 import { UserData, UserLog } from "../../../config"
 import { SmallText } from "../../smallText"
 import { IpInfo } from "./ipInfo"
 import { getResult, HighLight } from "../../highlight"
+import svgUrl from "../../../assets/server.svg"
 
 export const ServerPanel = ({
   user,
@@ -20,7 +20,7 @@ export const ServerPanel = ({
   return (
     <div className="flex-none p-8 rounded-lg bg-neutral-200">
       <div className="flex items-center h-10 gap-2">
-        <img className="size-4" src="/server.svg"></img>
+        <img className="size-4" src={svgUrl}></img>
         <SmallText>Server</SmallText>
       </div>
       <div className="pt-4"></div>

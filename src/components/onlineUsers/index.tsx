@@ -18,7 +18,7 @@ export const OnlineUsers = ({
     const keys = Object.keys(userLog)
     const userKeys = keys.filter((key) => key !== myId && key !== "server")
     setOnlineUsers(userKeys)
-  }, [userLog])
+  }, [userLog, myId])
 
   return (
     <div>
