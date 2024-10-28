@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { UserData, UserLog } from "../../config"
 import { OtherUser } from "./otherUser"
 import { SmallText } from "../smallText"

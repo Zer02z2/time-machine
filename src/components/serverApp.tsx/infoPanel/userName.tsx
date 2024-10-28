@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { socket, UserData } from "../../../config"
+import svgUrl from "../../../assets/user.svg"
 
 export const UserName = ({ user }: { user: UserData }) => {
   const [value, setValue] = useState<string>("")
@@ -9,7 +10,7 @@ export const UserName = ({ user }: { user: UserData }) => {
 
   return (
     <div className="flex items-center h-10 gap-2">
-      <img className="size-4" src="/user.svg"></img>
+      <img className="size-4" src={svgUrl}></img>
       <input
         type="text"
         value={value}

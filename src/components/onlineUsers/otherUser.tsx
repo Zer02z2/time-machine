@@ -2,6 +2,7 @@ import { UserData } from "../../config"
 import { getResult, HighLight } from "../highlight"
 import { SmallText } from "../smallText"
 import { IpInfo } from "../serverApp.tsx/infoPanel/ipInfo"
+import svgUrl from "../../assets/user.svg"
 
 export const OtherUser = ({
   me,
@@ -21,7 +22,7 @@ export const OtherUser = ({
   return (
     <div className="flex-none p-4 rounded-lg bg-neutral-200">
       <div className="flex items-center gap-2">
-        <img className="size-4" src="/user.svg"></img>
+        <img className="size-4" src={svgUrl}></img>
         <SmallText>{name}</SmallText>
       </div>
       <div className="pt-2"></div>
