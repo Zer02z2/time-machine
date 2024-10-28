@@ -42,8 +42,10 @@ export default function App() {
               <ServerApp userLog={userLog} user={user} />
             </div>
           </div>
-          <div className="flex-none h-screen p-8 overflow-y-auto border-l w-72 border-neutral-400">
-            <OnlineUsers myId={userId} user={user} userLog={userLog} />
+          <div className="flex-none w-72">
+            <div className="fixed top-0 right-0 h-screen p-8 overflow-y-auto border-l border-neutral-400 w-72 bg-neutral-300">
+              <OnlineUsers myId={userId} user={user} userLog={userLog} />
+            </div>
           </div>
         </div>
       )}
