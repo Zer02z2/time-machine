@@ -14,7 +14,7 @@ export default function App() {
       const id = socket.id
       setUserId(id)
       const timeZone = getTimeZone()
-      const userName = "Client Name"
+      const userName = "Edit your name"
       const user = {
         name: userName,
         timeZone: timeZone,

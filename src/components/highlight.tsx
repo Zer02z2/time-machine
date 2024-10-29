@@ -1,5 +1,10 @@
 import { FC } from "react"
 
+export interface ColorResult {
+  color: "yellow" | "green" | "pink" | "gray"
+  text: string
+}
+
 export const HighLight: FC<{
   children: string
   color: "yellow" | "green" | "purple" | "pink" | "gray"

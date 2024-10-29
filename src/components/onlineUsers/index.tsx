@@ -13,7 +13,7 @@ export const OnlineUsers = ({
   user: UserData
   userLog: UserLog
 }) => {
-  const [onlineUsers, setOnlineUsers] = useState<UserLog>()
+  const [onlineUsers, setOnlineUsers] = useState<UserLog>({})
 
   useEffect(() => {
     const keys = Object.keys(userLog)
@@ -27,11 +27,19 @@ export const OnlineUsers = ({
 
   return (
     <div>
-      <SmallText>{`Other online users - (${
-        onlineUsers ? Object.keys(onlineUsers).length : 0
+      <SmallText>{`Online users - (${
+        Object.keys(onlineUsers).length + 1
       })`}</SmallText>
       <div className="flex flex-col gap-2 pt-4">
         <AnimatePresence>
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <OtherUser me={user} />
+          </motion.div>
           {onlineUsers &&
             Object.keys(onlineUsers).map((key) => {
               return (
