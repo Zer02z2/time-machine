@@ -36,12 +36,12 @@ export const getResult = (
   }
   if (millis > 0) {
     return {
-      text: `${millis}ms in the future`,
+      text: `${millis}ms ahead`,
       color: "green",
     }
   } else if (millis < 0) {
     return {
-      text: `${-millis}ms in the past`,
+      text: `${-millis}ms behind`,
       color: "pink",
     }
   } else {
