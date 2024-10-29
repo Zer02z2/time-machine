@@ -33,7 +33,7 @@ export const ServerPanel = ({
       <div className="pt-2"></div>
       {timeDifference && (
         <>
-          <SmallText>On average, the server is</SmallText>
+          <SmallText>On average, the server is relatively</SmallText>
           <h3 className="text-xl">
             <HighLight color={result.color}>{result.text}</HighLight>
           </h3>

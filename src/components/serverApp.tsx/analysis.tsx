@@ -57,7 +57,7 @@ export const Analysis = ({ props }: { props: Props }) => {
       <h3 className="max-w-xl text-xl">
         <span>If that's true, the server's clock would be&nbsp;</span>
         <HighLight color={result.color}>{result.text}</HighLight>
-        <span>.</span>
+        <span>&nbsp;relative to my device's clock.</span>
       </h3>
     </motion.div>
   )
